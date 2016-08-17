@@ -255,8 +255,7 @@ angular.module('ui.bootstrap.dropdown', ['ui.bootstrap.position'])
           templateScope = scope.$new();
           $compile(tplContent.trim())(templateScope, function(dropdownElement) {
             var newEl = dropdownElement;
-            self.dropdownMenu.replaceWith(newEl);
-            self.dropdownMenu = newEl;
+            self.dropdownMenu.html(newEl);
             $document.on('keydown', uibDropdownService.keybindFilter);
           });
         });
@@ -272,9 +271,7 @@ angular.module('ui.bootstrap.dropdown', ['ui.bootstrap.position'])
         if (templateScope) {
           templateScope.$destroy();
         }
-        var newEl = angular.element('<ul class="dropdown-menu"></ul>');
-        self.dropdownMenu.replaceWith(newEl);
-        self.dropdownMenu = newEl;
+        self.dropdownMenu.empty();
       }
 
       self.selectedOption = null;
